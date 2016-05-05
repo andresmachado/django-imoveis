@@ -1,3 +1,10 @@
 Django==1.9.3
+django-appconf==1.0.2
+django-compressor==2.0
 flake8==2.5.2
-Pillow==3.220
+mccabe==0.4.0
+pep8==1.7.0
+Pillow==3.2.0
+pyflakes==1.0.0
+rcssmin==1.0.6
+rjsmin==1.0.12

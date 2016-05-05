@@ -29,8 +29,8 @@ class Property(models.Model):
     )
 
     help_text =_("Utilize este espaço para descrever seu anúncio. Quanto mais detalhado, maiores serão as chances de conseguir um bom negócio.")
-    property_type = models.CharField(choices=TYPE_CHOICES, default=TYPE_APARTMENT)
-    category = models.CharField(choices = CATEGORY_CHOICES, default=CATEGORY_STANDARD)
+    property_type = models.CharField(max_length=1, choices=TYPE_CHOICES, default=TYPE_APARTMENT)
+    category = models.CharField(max_length=1, choices = CATEGORY_CHOICES, default=CATEGORY_STANDARD)
     rooms = models.PositiveSmallIntegerField()
     util_area = models.PositiveSmallIntegerField()
     total_area = models.PositiveSmallIntegerField()
