@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 class Property(models.Model):
@@ -28,14 +29,18 @@ class Property(models.Model):
         (TYPE_HOUSE, _('Casas'))
     )
 
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL)
     help_text =_("Utilize este espaço para descrever seu anúncio. Quanto mais detalhado, maiores serão as chances de conseguir um bom negócio.")
     property_type = models.CharField(max_length=1, choices=TYPE_CHOICES, default=TYPE_APARTMENT)
     category = models.CharField(max_length=1, choices = CATEGORY_CHOICES, default=CATEGORY_STANDARD)
     rooms = models.PositiveSmallIntegerField()
-    util_area = models.PositiveSmallIntegerField()
+    util_area = models.PositiveSmallIntegerField(blank=True)
     total_area = models.PositiveSmallIntegerField()
     title = models.CharField(max_length=140)
     description = models.TextField()
     rent_price = models.DecimalField(max_digits=19, decimal_places=10)
     image = models.ImageField(upload_to='static/img/')
     timestamp = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title

@@ -5,6 +5,7 @@ flake8==2.5.2
 mccabe==0.4.0
 pep8==1.7.0
 Pillow==3.2.0
+psycopg2==2.6.1
 pyflakes==1.0.0
 rcssmin==1.0.6
 rjsmin==1.0.12
