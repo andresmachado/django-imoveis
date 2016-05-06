@@ -2,44 +2,40 @@ from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
+from smart_selects.db_fields import ChainedForeignKey
+
+
+class PropertyType(models.Model):
+    name = models.CharField(max_length=140)
+
+    def __str__(self):
+        return self.name
+
+class Category(models.Model):
+    title = models.CharField(max_length=140)
+    property_type = models.ForeignKey(PropertyType)
+
+    def __str__(self):
+        return self.title
+
 class Property(models.Model):
-    ## Choices for property category
-    CATEGORY_STANDARD = 1
-    CATEGORY_DUPLEX = 2
-    CATEGORY_TRIPLEX = 3
-    CATEGORY_PENTHOUSE = 4
-    CATEGORY_DUPLEX_PENTHOUSE = 5
-    CATEGORY_TRIPLEX_PENTHOUSE = 6
-
-    CATEGORY_CHOICES = (
-        (CATEGORY_STANDARD, _('Padrão')),
-        (CATEGORY_DUPLEX, _('Duplex')),
-        (CATEGORY_TRIPLEX, _('Triplex')),
-        (CATEGORY_PENTHOUSE, _('Cobertura')),
-        (CATEGORY_DUPLEX_PENTHOUSE, _('Cobertura Duplex')),
-        (CATEGORY_TRIPLEX_PENTHOUSE, _('Cobetura Triplex'))
-    )
-
-    ## Choices for property type
-    TYPE_APARTMENT = 1
-    TYPE_HOUSE = 2
-
-    TYPE_CHOICES = (
-        (TYPE_APARTMENT, _('Apartamentos')),
-        (TYPE_HOUSE, _('Casas'))
-    )
 
     owner = models.ForeignKey(settings.AUTH_USER_MODEL)
     help_text =_("Utilize este espaço para descrever seu anúncio. Quanto mais detalhado, maiores serão as chances de conseguir um bom negócio.")
-    property_type = models.CharField(max_length=1, choices=TYPE_CHOICES, default=TYPE_APARTMENT)
-    category = models.CharField(max_length=1, choices = CATEGORY_CHOICES, default=CATEGORY_STANDARD)
+    cep = models.CharField(max_length=8, default='')
+    address = models.CharField(max_length=140)
+    state = models.CharField(max_length=140)
+    city = models.CharField(max_length=140)
+    district = models.CharField(max_length=140)
+    property_type = models.ForeignKey(PropertyType)
+    category = ChainedForeignKey(Category, chained_field='property_type', chained_model_field='property_type')
     rooms = models.PositiveSmallIntegerField()
-    util_area = models.PositiveSmallIntegerField(blank=True)
+    util_area = models.PositiveSmallIntegerField(blank=True, null=True)
     total_area = models.PositiveSmallIntegerField()
     title = models.CharField(max_length=140)
+    image = models.ImageField(upload_to='static/img/')
     description = models.TextField()
     rent_price = models.DecimalField(max_digits=19, decimal_places=10)
-    image = models.ImageField(upload_to='static/img/')
     timestamp = models.DateTimeField(auto_now=True)
 
     def __str__(self):

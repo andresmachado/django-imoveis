@@ -21,6 +21,6 @@ from . import views
 urlpatterns = [
     url(r'^$', views.property_list, name='index'),
     url(r'^imoveis/anuncie/$', views.property_create, name='create_property'),
-    url(r'^imoveis/(?P<pk>[0-9]+)/$', views.property_detail, name='show_propery'),
+    url(r'^imoveis/(?P<pk>[0-9]+)/$', views.property_detail, name='show_property'),
     url(r'^imoveis/(?P<pk>[0-9]+)/editar-anuncio$', views.property_edit, name='edit_property'),
 ]

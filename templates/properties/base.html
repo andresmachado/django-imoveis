@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %} Django Imoveis - Aluguel de imóveis {% endblock title %}</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+	<script src="{% static 'smart-selects/admin/js/chainedfk.js' %}" ></script>
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				{% block content %}
+				{% endblock content %}
+			</div>
+		</div>
+	</div>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/dc144cd10f.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
