@@ -2,3 +2,27 @@
 	margin: 0;
 	padding: 0;
 }
+
+.search input {
+	width: 40%;
+	padding: 10px;
+}
+
+.search button {
+	padding: 10px;
+	font-weight: bold;
+}
+
+
+header {
+	margin-bottom: 30px;
+}
+
+header ul {
+	padding: 1rem 0 1rem 0;
+	margin-top: 1.5rem;
+}
+
+header ul a {
+	color: white;
+}

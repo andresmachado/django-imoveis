@@ -14,6 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 
 from . import views
@@ -24,3 +26,6 @@ urlpatterns = [
     url(r'^imoveis/(?P<pk>[0-9]+)/$', views.property_detail, name='show_property'),
     url(r'^imoveis/(?P<pk>[0-9]+)/editar-anuncio$', views.property_edit, name='edit_property'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

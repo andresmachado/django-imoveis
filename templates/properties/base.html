@@ -1,19 +1,46 @@
 {% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
 	<meta charset="UTF-8">
 	<title>{% block title %} Django Imoveis - Aluguel de imóveis {% endblock title %}</title>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 	<script src="{% static 'smart-selects/admin/js/chainedfk.js' %}" ></script>
 </head>
 <body>
-
+	<header>
+		<nav class="header nav navbar-inverse">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<h3><a href="{% url 'index' %}">Django Imoveis</a></h3>	
+					</div>
+					<div class="main-menu col-md-4">
+						<ul class="list-inline">
+							<li><a href="#">Anuncie um imóvel</a></li>
+							<li><a href="#">Login</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+			<div class="messages col-md-12 col-xs-12 col-lg-12">
+			{% if messages %}
+            <ul class="messages"> 
+            {% for message in messages %}
+                <li {% if message.tags %} class="alert-{{ message.tags }}" {% endif %}> 
+                    <span class="fa fa-check-circle"></span> {{ message }}
+                </li>
+            {% endfor %}
+            {% endif %}
+			</div>
 				{% block content %}
 				{% endblock content %}
 			</div>

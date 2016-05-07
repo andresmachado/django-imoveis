@@ -33,7 +33,7 @@ class Property(models.Model):
     util_area = models.PositiveSmallIntegerField(blank=True, null=True)
     total_area = models.PositiveSmallIntegerField()
     title = models.CharField(max_length=140)
-    image = models.ImageField(upload_to='static/img/')
+    image = models.ImageField(upload_to='img/')
     description = models.TextField()
     rent_price = models.DecimalField(max_digits=19, decimal_places=10)
     timestamp = models.DateTimeField(auto_now=True)
