@@ -30,3 +30,6 @@ def logout_user(request):
 		raise Http404
 		# messages.error(request, "Você não está logado!")
 		# return render(request, 'properties/index.html')
+
+def register(request):
+    pass
