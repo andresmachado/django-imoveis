@@ -22,7 +22,12 @@ def property_create(request, template_name = 'properties/property_create.html'):
 
 def property_detail(request, pk, template_name='properties/property_detail.html'):
 	property = get_object_or_404(Property, pk=pk)
-	return render(request, template_name, {'property': property})
+	recommended = Property.objects.filter(district=property.district).exclude(pk=pk)
+	context = {
+		'property': property,
+		'recommended': recommended
+	}
+	return render(request, template_name, context)
 
 def property_edit(request, pk):
     return HttpResponse('<h1> Edit page works! </h1>')

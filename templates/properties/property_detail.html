@@ -5,55 +5,67 @@
 {% load humanize %}
 
 {% block content %}
-	<div class="container">
-		<div class="row">
-			<div class="main col-md-8">
-				<div class="col-md-12">
-					<img src="{{ property.image.url }}" class='img-responsive'>
+<div class="container">
+	<div class="row">
+		<div class="main col-md-8">
+			<div class="col-md-12">
+				<img src="{{ property.image.url }}" class='img-responsive'>
+			</div>
+			<div class="b-shadow col-md-12 property-location">
+				<div class="col-md-8">
+				<h1 class="address-info">
+					<span class="subtitle">{{ property.property_type }} {{ property.category }}</span>
+					<br>
+					<p class="property-address">
+						{{ property.address }}
+					</p>
+					<p class="property-address2">
+						{{ property.district}}, {{ property.city}} - {{ property.state }}
+					</p>
+				</h1>
 				</div>
-				<div class="b-shadow col-md-12 property-location">
-					<div class="col-md-8">
-					<h1 class="address-info">
-						<span class="subtitle">{{ property.property_type }} {{ property.category }}</span>
-						<br>
-						<p class="property-address">
-							{{ property.address }}
-						</p>
-						<p class="property-address2">
-							{{ property.district}}, {{ property.city}} - {{ property.state }}
-						</p>
+				<div class="col-md-4 property-rentinfo">
+					<h1>
+						<h3>Valor do aluguel</h3>
+						<p class="property-rentvalue">
+							R$ {{ property.rent_price|floatformat:2}}
+						</p> 
 					</h1>
-					</div>
-					<div class="col-md-4 property-rentinfo">
-						<h1>
-							<h3>Valor do aluguel</h3>
-							<p class="property-rentvalue">
-								R$ {{ property.rent_price|floatformat:2}}
-							</p> 
-						</h1>
-					</div>
-				</div>
-				<div class="b-shadow col-md-12 property-details">
-					<ul>
-						<li>
-							<p>{{ property.rooms }}</p>
-							<span class="info">QUARTOS</span>
-						</li>
-						<li>
-							<p>{{ property.util_area }}</p>
-							<span class="info">ÁREA ÚTIL (M²)</span>
-						</li>
-					</ul>
-				</div>
-				<div class="b-shadow col-md-12 property-info">
-					<h1>{{ property.title }}</h1>
-					<h3>Descrição</h3>
-					<p>{{ property.description }}</p>
 				</div>
 			</div>
-			<aside class="sidebar col-md-4">
-				
-			</aside>
+			<div class="b-shadow col-md-12 property-details">
+				<ul>
+					<li>
+						<p>{{ property.rooms }}</p>
+						<span class="info">QUARTOS</span>
+					</li>
+					<li>
+						<p>{{ property.util_area }}</p>
+						<span class="info">ÁREA ÚTIL (M²)</span>
+					</li>
+				</ul>
+			</div>
+			<div class="b-shadow col-md-12 property-info">
+				<h1>{{ property.title }}</h1>
+				<h3>Descrição</h3>
+				<p>{{ property.description }}</p>
+			</div>
 		</div>
+		<aside class="sidebar col-md-4">
+			<h1>Outras ofertas</h1>
+			{% for property in recommended %}
+				<div class="recommended col-md-12">
+					<div class="thumbnail col-md-4">
+						<a href="{% url 'show_property' pk=property.pk %}"><img src="{{ property.image.url }}" class="img-responsive"></a>
+					</div>
+					<div class="col-md-8">
+						<p><strong>R$ {{ property.rent_price|floatformat:2 }}</strong></p>
+						<p><i class="glyphicon glyphicon-map-marker"></i> {{ property.district }}</p>
+						<p><i class="glyphicon glyphicon-bed"></i> {{ property.rooms }} dorms | {{ property.util_area }}m²</p>
+					</div>
+				</div>
+			{% endfor %}
+		</aside>
 	</div>
+</div>
 {% endblock content %}

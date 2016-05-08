@@ -27,6 +27,9 @@ class Category(models.Model):
         return self.title
 
 class Property(models.Model):
+    """
+    Model for all properties
+    """
 
     owner = models.ForeignKey(settings.AUTH_USER_MODEL)
     help_text =_("Utilize este espaço para descrever seu anúncio. Quanto mais detalhado, maiores serão as chances de conseguir um bom negócio.")
@@ -52,3 +55,5 @@ class Property(models.Model):
 
     def __str__(self):
         return self.title
+
+
