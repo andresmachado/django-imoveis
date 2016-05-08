@@ -1,1 +1,4 @@
-*.pyc
+*.py[oc]
+*__pycache__
+*.jpg|png
+
