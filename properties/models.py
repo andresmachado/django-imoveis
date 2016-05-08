@@ -8,12 +8,20 @@ from smart_selects.db_fields import ChainedForeignKey
 class PropertyType(models.Model):
     name = models.CharField(max_length=140)
 
+    class Meta:
+        verbose_name = _("Tipo do imóvel")
+        verbose_name_plural = _('Tipos de imóveis')
+
     def __str__(self):
         return self.name
 
 class Category(models.Model):
     title = models.CharField(max_length=140)
     property_type = models.ForeignKey(PropertyType)
+
+    class Meta:
+        verbose_name = _("Categoria")
+        verbose_name_plural = _('Categorias')
 
     def __str__(self):
         return self.title
@@ -37,6 +45,10 @@ class Property(models.Model):
     description = models.TextField()
     rent_price = models.DecimalField(max_digits=19, decimal_places=10)
     timestamp = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = _("Imóvel")
+        verbose_name_plural = _('Imóveis')
 
     def __str__(self):
         return self.title

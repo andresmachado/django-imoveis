@@ -42,6 +42,10 @@ header ul a:hover {
 	text-decoration: none;
 }
 
+header ul p {
+	color: white;
+}
+
 .property h4 {
 	margin: 0;
 }
@@ -52,4 +56,8 @@ header ul a:hover {
 
 .owner {
 	color: #bdc3c7;
+}
+
+.messages {
+	list-style: none;
 }
