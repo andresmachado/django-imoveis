@@ -1,0 +1,53 @@
+.b-shadow {
+	box-shadow: 0 2px 3px rgba(0,0,0,0.25);
+	transition: ease-in-out 0.5s;
+	margin: 1em;
+}
+
+.b-shadow:hover {
+	box-shadow: 0 2px 8px #979797;
+	transition: ease-in-out 0.5s;
+}
+
+.property-location .address-info {
+	margin: 0;
+}
+
+.subtitle {
+	font-size: 0.4em;
+	text-transform: uppercase;
+	font-weight: normal;
+}
+
+.property-address {
+	font-size: 0.6em;
+}
+
+.property-address2 {
+	font-size: 0.5em;
+	font-weight: bolder;
+}
+
+.property-rentinfo .property-rentvalue {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.property-rentinfo h3 {
+	font-size: 1em;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.property-details ul {
+	list-style: none;
+}
+
+.property-details ul li {
+	display: inline-block;
+	padding: 10px;
+}
+
+.property-details p {
+	font-size: 1.5em;
+}

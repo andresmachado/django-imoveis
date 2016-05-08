@@ -16,10 +16,10 @@
 				</form>
 			</div>
 		</div>
-		<h3>Ultimas ofertas</h3>
+		<h3><strong>Últimas ofertas</strong></h3>
 		{% for property in properties %}
-		<div class="col-md-4 col-xs-12 col-lg-4">
-			<a href="{% url 'show_property' pk=property.pk %}"><h4>{{ property.title }}</h4></a>
+		<div class="property col-md-4 col-xs-12 col-lg-4">
+			<a href="{% url 'show_property' pk=property.pk %}"><h3>{{ property.title }}</h3></a>
 			<div class="thumbnail pull-left col-md-7">
 				{% if property.image %}
 					<img src="{{ property.image.url }}" class='img-responsive'/>
@@ -28,10 +28,10 @@
 			<div class="col-md-5 property-info pull-right">
 				<h4>{{ property.property_type }}</h4>
 				<small>{{ property.category }}</small>
-				<h5><strong>R$ {{ property.rent_price|floatformat:2|intcomma }}</strong></h5>
+				<p><strong>R$ {{ property.rent_price|floatformat:2|intcomma }}</strong></p>
 				<p>{{ property.district }}</p>
 				<p><spam>{{ property.rooms }} dorms</spam> | <spam>{{ property.total_area }}m²</spam></p>
-				<p>{{ property.owner|upper }}</p>
+				<p class="owner">{{ property.owner|upper }}</p>
 			</div>
 		</div>
 		{% endfor%}

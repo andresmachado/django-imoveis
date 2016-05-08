@@ -11,26 +11,30 @@
 				<div class="col-md-12">
 					<img src="{{ property.image.url }}" class='img-responsive'>
 				</div>
-				<div class="clearfix col-md-12 property-location">
-					<div class="col-md-8 pull-left">
-					<h1 class="pull-left">
+				<div class="b-shadow col-md-12 property-location">
+					<div class="col-md-8">
+					<h1 class="address-info">
 						<span class="subtitle">{{ property.property_type }} {{ property.category }}</span>
 						<br>
 						<p class="property-address">
 							{{ property.address }}
 						</p>
-						<p class="property-location">
+						<p class="property-address2">
 							{{ property.district}}, {{ property.city}} - {{ property.state }}
 						</p>
 					</h1>
 					</div>
-					<div class="col-md-4 property-value">
-						<h3>Valor do aluguel</h3>
-						<span><strong>R$ {{ property.rent_price|floatformat:2|intcomma}}</strong></span>
+					<div class="col-md-4 property-rentinfo">
+						<h1>
+							<h3>Valor do aluguel</h3>
+							<p class="property-rentvalue">
+								R$ {{ property.rent_price|floatformat:2}}
+							</p> 
+						</h1>
 					</div>
 				</div>
-				<div class="col-md-12 property-details">
-					<ul class="list-inline">
+				<div class="b-shadow col-md-12 property-details">
+					<ul>
 						<li>
 							<p>{{ property.rooms }}</p>
 							<span class="info">QUARTOS</span>
@@ -41,7 +45,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class="col-md-12 property-info">
+				<div class="b-shadow col-md-12 property-info">
 					<h1>{{ property.title }}</h1>
 					<h3>Descrição</h3>
 					<p>{{ property.description }}</p>
