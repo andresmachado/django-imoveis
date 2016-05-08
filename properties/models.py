@@ -6,7 +6,7 @@ from smart_selects.db_fields import ChainedForeignKey
 
 
 class PropertyType(models.Model):
-    name = models.CharField(max_length=140)
+    name = models.CharField(_('Tipo do imóvel'), max_length=140)
 
     class Meta:
         verbose_name = _("Tipo do imóvel")
@@ -16,7 +16,7 @@ class PropertyType(models.Model):
         return self.name
 
 class Category(models.Model):
-    title = models.CharField(max_length=140)
+    title = models.CharField(_('Categoria'), max_length=140)
     property_type = models.ForeignKey(PropertyType)
 
     class Meta:
@@ -34,19 +34,19 @@ class Property(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL)
     help_text =_("Utilize este espaço para descrever seu anúncio. Quanto mais detalhado, maiores serão as chances de conseguir um bom negócio.")
     cep = models.CharField(max_length=8, default='')
-    address = models.CharField(max_length=140)
-    state = models.CharField(max_length=140)
-    city = models.CharField(max_length=140)
-    district = models.CharField(max_length=140)
+    address = models.CharField(_('Endereço'), max_length=140)
+    state = models.CharField(_('Estado'), max_length=2)
+    city = models.CharField(_('Cidade'), max_length=140)
+    district = models.CharField(_('Bairro'), max_length=140)
     property_type = models.ForeignKey(PropertyType)
     category = ChainedForeignKey(Category, chained_field='property_type', chained_model_field='property_type')
-    rooms = models.PositiveSmallIntegerField()
-    util_area = models.PositiveSmallIntegerField(blank=True, null=True)
-    total_area = models.PositiveSmallIntegerField()
-    title = models.CharField(max_length=140)
-    image = models.ImageField(upload_to='img/')
-    description = models.TextField()
-    rent_price = models.DecimalField(max_digits=19, decimal_places=10)
+    rooms = models.PositiveSmallIntegerField(_('Quartos'))
+    util_area = models.PositiveSmallIntegerField(_('Área útil'), blank=True, null=True)
+    total_area = models.PositiveSmallIntegerField(_('Área total'))
+    title = models.CharField(_('Titulo'), max_length=140)
+    image = models.ImageField(_('Imagem'), upload_to='img/')
+    description = models.TextField(_('Descrição'))
+    rent_price = models.DecimalField(_('Valor do aluguel'), max_digits=19, decimal_places=10)
     timestamp = models.DateTimeField(auto_now=True)
 
     class Meta:

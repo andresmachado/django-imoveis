@@ -5,12 +5,12 @@
 {% block content %}
 	<div class="container">
 		<div class="row">
-			<div class="col-md-9 col-md-offset-1">
+			<div class="signup-form col-md-8 col-md-offset-2">
 				<p><a href="{% url "index" %}">← Voltar</a></p>
 				<h2>Anuncie seu imóvel</h2>
-				<form action='' method='POST' enctype="multipart/form-data">{% csrf_token %}
+				<form class="property-create" action='' method='POST' enctype="multipart/form-data">{% csrf_token %}
 					{{ form.as_p }}
-					<input class="btn btn-success" type="submit" value="Anunciar imóvel" />
+					<input class="btn btn-success btn-block" type="submit" value="Anunciar imóvel" />
 				</form>
 			</div>
 		</div>

@@ -17,6 +17,11 @@
 			</div>
 		</div>
 		<h3><strong>Últimas ofertas</strong></h3>
+		{% if not properties %}
+		<div class="empty col-md-12">
+			<h1>Não há ofertas anunciadas no momento.</h1>
+		</div>
+		{% else %}
 		{% for property in properties %}
 		<div class="property col-md-4 col-xs-12 col-lg-4">
 			<a href="{% url 'show_property' pk=property.pk %}"><h3>{{ property.title }}</h3></a>
@@ -35,6 +40,7 @@
 			</div>
 		</div>
 		{% endfor%}
+		{% endif %}
 	</div>
 </div>
 {% endblock content %}

@@ -33,8 +33,6 @@ def logout_user(request):
 		return HttpResponseRedirect(reverse('index'))
 	else:
 		raise Http404
-		# messages.error(request, "Você não está logado!")
-		# return render(request, 'properties/index.html')
 
 def register(request, template_name='users/signup.html'):
     form = RegisterUserForm()
@@ -42,9 +40,14 @@ def register(request, template_name='users/signup.html'):
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             form.save()
+            request.session['registered'] = True
             return HttpResponseRedirect(reverse('registration_complete'))
     return render(request, template_name, {'form': form})
 
 
 def registration_complete(request):
-    return render(request, 'users/registration_complete.html')
+    if request.session.get('registered', True):
+        request.session['registered'] = False
+        return render(request, 'users/registration_complete.html')
+    else:
+        raise Http404

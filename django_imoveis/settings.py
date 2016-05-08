@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'properties',
     'users',
+    #Third-Party apps
     'smart_selects',
 ]
 

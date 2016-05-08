@@ -23,13 +23,12 @@
 					<div class="main-menu col-md-6">
 						<ul class="list-inline pull-right">
 						{% if request.user.is_authenticated %}
-							<li><p>Olá {{ request.user.username }}!</p></li>
+							<li><p>Olá {{ request.user.first_name }}!</p></li>
 							<li><a href="{% url 'create_property' %}">Anuncie um imóvel</a></li>
 							<li><a href="#"><i class="fa fa-user"></i> Minha conta</a></li>
 							<li><a href="{% url 'logout_user' %}"><i class="fa fa-sign-out"></i> Sair</a></li>
 						{% else %}
-							<li><a href="{% url 'create_property' %}">Anuncie um imóvel</a></li>
-							<li><a href="{% url 'login_user' %}"><i class="fa fa-sign-in"></i> Login</a></li>
+							<li><a href="{% url 'login_user' %}"><i class="fa fa-sign-in"></i> Entrar</a></li>
 						{% endif %}
 							
 						</ul>
