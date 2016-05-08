@@ -118,3 +118,12 @@ header ul p {
 	font-weight: bolder;
 	font-size: 0.9em;
 }
+
+.signup-confirm p {
+	text-align: center;
+}
+
+.signup-confirm h1 {
+	text-align: center;
+	font-weight: bold;
+}

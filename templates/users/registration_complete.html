@@ -1,0 +1,14 @@
+{% extends 'properties/base.html' %}
+{% block title %}{{ block.super}} | Obrigado por registrar-se! {% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="signup-confirm col-md-6 col-md-offset-3">
+				<h1>Obrigado por cadastrar-se!</h1>
+				<p>Agora, você já pode criar seus anúncios ou alugar o imóvel com o qual você sempre sonhou.</p>
+				<p>Para acessar sua conta, <a href="{% url 'login_user' %}">clique aqui</a></p>
+			</div>
+		</div>
+	</div>
+{% endblock %}

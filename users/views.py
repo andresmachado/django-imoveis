@@ -2,7 +2,6 @@ from django.http import *
 from django.shortcuts import render, render_to_response, redirect
 from django.contrib import messages
 from django.template import RequestContext
-from django.core.context_processors import csrf
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -21,6 +20,9 @@ def login_user(request, template_name='users/login.html'):
                 login(request, user)
                 messages.success(request, "Bem vindo, {}".format(request.user.username))
                 return HttpResponseRedirect(reverse('index'))
+            else:
+                messages.error(request, "Seu usuário está inativo, favor entrar em contato com o administrador.")
+                return HttpResponseRedirect(reverse('index'))
     return render(request, template_name, context_instance=RequestContext(request))
 
 
@@ -34,22 +36,14 @@ def logout_user(request):
 		# messages.error(request, "Você não está logado!")
 		# return render(request, 'properties/index.html')
 
-def register(request):
+def register(request, template_name='users/signup.html'):
     form = RegisterUserForm()
     if request.method == 'POST':
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('registration_complete'))
-    # variables = {
-    #     'form': form
-    # }
-    # variables.update(csrf(request))
-    token = {}
-    token.update(csrf(request))
-    token['form'] = form
-
-    return render(request, 'users/signup.html', token)
+    return render(request, template_name, {'form': form})
 
 
 def registration_complete(request):

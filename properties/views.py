@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
 from .forms import CreatePropertyForm
@@ -9,6 +10,7 @@ def property_list(request, template_name='properties/property_list.html'):
 	properties = Property.objects.all()
 	return render(request, template_name, {'properties': properties})
 
+@login_required
 def property_create(request, template_name = 'properties/property_create.html'):
 	form = CreatePropertyForm(request.POST or None, request.FILES or None)
 	if form.is_valid():
