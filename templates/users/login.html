@@ -9,12 +9,16 @@
 			<h1>Login</h1>
 			<form method="POST" action="{% url 'login_user' %}">{% csrf_token %}
 				{% if next %}
-				<input type="hidden" name="next" value="{{ next }}">
+				<input type="hidden" class="form-input" name="next" value="{{ next }}">
 				{% endif %}
-				<input type="text" id="username" name="username" placeholder="Nome de usuário">
-				<input type="password" id="password" name="password" placeholder="Senha" />
-				<button type="submit" class="btn btn-block btn-success">Entrar</button>
 				<p>
+					<input type="text" class="form-input" id="username" name="username" placeholder="Nome de usuário">
+				</p>
+				<p>
+					<input type="password" class="form-input" id="password" name="password" placeholder="Senha" />
+				</p>
+				<button type="submit" class="btn btn-block btn-success">Entrar</button>
+				<p class="register-tip">
 					Ainda não tem conta? <a href="{% url 'register' %}">Cadastre-se!</a>
 				</p>
 			</form>

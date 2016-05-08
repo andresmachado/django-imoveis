@@ -2,9 +2,12 @@ from django.http import *
 from django.shortcuts import render, render_to_response, redirect
 from django.contrib import messages
 from django.template import RequestContext
+from django.core.context_processors import csrf
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+
+from .forms import RegisterUserForm
 
 def login_user(request, template_name='users/login.html'):
     username = password = ''
@@ -32,4 +35,22 @@ def logout_user(request):
 		# return render(request, 'properties/index.html')
 
 def register(request):
-    pass
+    form = RegisterUserForm()
+    if request.method == 'POST':
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('registration_complete'))
+    # variables = {
+    #     'form': form
+    # }
+    # variables.update(csrf(request))
+    token = {}
+    token.update(csrf(request))
+    token['form'] = form
+
+    return render(request, 'users/signup.html', token)
+
+
+def registration_complete(request):
+    return render(request, 'users/registration_complete.html')

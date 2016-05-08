@@ -1,0 +1,54 @@
+{% extends 'properties/base.html' %}
+{% block title %}{{ block.super }} | Crie sua conta! {% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="signup-form col-md-5 col-md-offset-3">
+			<h1>Encontre as melhores ofertas de imóveis</h1>
+			<h4> A casa dos seus sonhos está a um passo de distância.</h4>
+			<form action='{{ action }}' method="POST">{% csrf_token %}
+				<div class="form-errors col-md-12">
+					{% if form.non_field_errors %}
+			    	<ul>
+			      	{% for error in form.non_field_errors %}
+			        	<li>{{ error }}</li>
+			      	{% endfor %}
+			    	</ul>
+			    	{% endif %}
+				</div>
+				<p>
+					{{ form.username.errors }}
+					<input id="id_username" class="form-input" maxlength="30" name="username" type="text" placeholder="Nome de usuário">
+					<span class="helptext">Obrigatório. 30 caracteres ou menos. Somente letras, dígitos e @/./+/-/_.</span>
+				</p>
+				<p>
+					{{ form.email.errors }}
+					<input id="id_email" class="form-input" name="email" type="email" placeholder="Email">
+				</p>
+				<p>
+					{{ form.first_name.errors }}
+					<input id="id_first_name" class="form-input" maxlength="100" name="first_name" type="text" placeholder="Nome">
+				</p>
+				<p>
+					{{ form.last_name.errors }}
+					<input id="id_last_name" class="form-input" maxlength="100" name="last_name" type="text" placeholder="Sobrenome">
+				</p>
+				<p>
+					{{ form.password1.errors }}
+					<input id="id_password1" class="form-input" name="password1" type="password" placeholder="Senha">
+				</p>
+				<p>
+					{{ form.password2.errors }}
+					<input id="id_password2" class="form-input" name="password2" type="password" placeholder="Confirmação de senha">
+					<span class="helptext">Informe, para verificação, a mesma senha informada anteriormente.</span>
+				</p>
+				<button type="submit" class="btn btn-block btn-success">Cadastrar</button>
+			</form>
+			<p class="register-tip">
+				Já tem uma conta? <a href="{% url 'login_user' %}">Faça login</a>
+			</p>
+		</div>
+	</div>
+</div>
+{% endblock %}

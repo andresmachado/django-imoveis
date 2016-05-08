@@ -69,16 +69,52 @@ header ul p {
 	box-shadow: 5px 8px 30px 0px rgba(0,0,0,0.44);
 }
 
-.login-form p {
-	text-align: center;
-	margin: 0.8em 0 0 0;
-}
-
-.login-form input {
+.form-input {
 	width: 100%;
 	display: block;
-	margin-bottom: 1em;
 	padding: 0.7em;
 	border-radius: 4px;
 	border: 1px solid #bdc3c7;
+}
+
+.form-input p, .register-tip {
+	text-align: center;
+	margin: 0.9em 0 0 0;
+}
+
+.signup-form {
+	padding: 1.5em;
+	margin-bottom: 2em;
+	-webkit-box-shadow: 5px 8px 30px 0px rgba(0,0,0,0.44);
+	-moz-box-shadow: 5px 8px 30px 0px rgba(0,0,0,0.44);
+	box-shadow: 5px 8px 30px 0px rgba(0,0,0,0.44);
+}
+
+.signup-form h1 {
+	text-align: center;
+	font-size: 2.5em;
+	margin: 0;
+}
+
+.signup-form h4 {
+	font-size: 1.5em;
+	color: #7f8c8d;
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+.signup-form .helptext {
+	display: block;
+	font-size: small;
+	color: #bdc3c7;
+}
+
+.signup-form ul {
+	list-style: none;
+}
+
+.signup-form ul li {
+	color: red;
+	font-weight: bolder;
+	font-size: 0.9em;
 }
