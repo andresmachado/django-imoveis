@@ -27,9 +27,11 @@ def property_create(request, template_name = 'properties/property_create.html'):
 @login_required
 def property_edit(request, pk, template_name='properties/property_create.html'):
     property = get_object_or_404(Property, pk=pk, owner=request.user.id)
-    form = CreatePropertyForm(request.POST or None, instance=property)
+    form = CreatePropertyForm(request.POST or None, request.FILES or None, instance=property)
     if form.is_valid():
     	property = form.save()
+    	if property.image in form.changed_data:
+    		property.image = request.FILES['image']
     	property.save()
     	messages.success(request, "Post editado com successo!")
     	return redirect('show_property', pk=pk)
