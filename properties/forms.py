@@ -4,6 +4,11 @@ from .models import Property
 
 class CreatePropertyForm(forms.ModelForm):
 
+	def __init__(self, *args, **kwargs):
+		super(CreatePropertyForm, self).__init__(*args, **kwargs)
+		self.fields['category'].label = "Categoria"
+		self.fields['property_type'].label = "Tipo do imóvel"
+
 	class Meta:
 		model = Property
 		fields = ( 'cep', 'address', 'state', 'city', 'district',
