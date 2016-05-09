@@ -1,4 +1,5 @@
 boto==2.40.0
+dj-database-url==0.4.1
 Django==1.9.3
 django-appconf==1.0.2
 django-compressor==2.0
@@ -7,6 +8,7 @@ django-smart-selects==1.2.2
 django-storages==1.4.1
 django-widget-tweaks==1.4.1
 flake8==2.5.2
+gunicorn==19.4.5
 mccabe==0.4.0
 pep8==1.7.0
 Pillow==3.2.0
@@ -15,3 +17,4 @@ pyflakes==1.0.0
 rcssmin==1.0.6
 rjsmin==1.0.12
 sqlparse==0.1.19
+whitenoise==3.0
