@@ -49,11 +49,15 @@ def registration_complete(request):
 
 @login_required
 def user_profile(request):
-    user = get_object_or_404(User, username=request.user.username);
+    user = get_object_or_404(User, username=request.user.username)
     my_properties = Property.objects.filter(owner=request.user.id)
     context = {
         'user': user,
         'properties': my_properties
     }
-    return render(request, 'users/my_account.html', context)
+    return render(request, 'users/my_account_properties.html', context)
 
+@login_required
+def user_profile_settings(request, template_name="users/my_account_settings.html"):
+    user = get_object_or_404(User, username=request.user.username)
+    return render(request, template_name, {'user': user})

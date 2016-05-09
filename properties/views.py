@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
@@ -8,6 +9,14 @@ from .models import Property
 
 def property_list(request, template_name='properties/property_list.html'):
 	properties = Property.objects.all()
+	search = request.GET.get('search')
+	if search:
+		properties = properties.filter(
+			Q(district__unaccent__icontains=search) |
+			Q(city__unaccent__icontains=search) |
+			Q(state__unaccent__icontains=search) |
+			Q(address__unaccent__icontains=search)
+		)
 	return render(request, template_name, {'properties': properties})
 
 

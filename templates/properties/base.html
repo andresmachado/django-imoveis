@@ -23,12 +23,13 @@
 					<div class="main-menu col-md-6">
 						<ul class="list-inline pull-right clearfix">
 						{% if request.user.is_authenticated %}
+							<li class="greetings">Olá {{ request.user.first_name }}!</li>
 							<li><a href="{% url 'create_property' %}">Anuncie um imóvel</a></li>
 							<li>
 								<a><i class="fa fa-user"></i> Minha conta <span class="arrow">&#9660;</span></a>
 								<ul class="submenu">
 									<li><a href="{% url 'user_profile' %}"><i class="fa fa-home"></i>  Meus imóveis</a></li>
-									<li><a href=""> <i class="fa fa-gear"></i> Configurações da conta</a></li>
+									<li><a href="{% url 'user_settings' %}"> <i class="fa fa-gear"></i> Configurações da conta</a></li>
 									<li><a href="{% url 'logout_user' %}"><i class="fa fa-sign-out"></i> Sair</a></li>
 								</ul>
 							</li>
@@ -49,7 +50,7 @@
 			{% if messages %}
             <ul class="messages"> 
             {% for message in messages %}
-                <li {% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible" {% endif %}> 
+                <li {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}> 
                     <span class="fa fa-check-circle"></span> {{ message }}
                 </li>
             {% endfor %}

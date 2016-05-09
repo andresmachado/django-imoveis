@@ -84,6 +84,10 @@ header ul a:hover {
     display:block;
 }
 
+.greetings {
+	margin-top: 0.7em;
+	color: white;
+}
 
 .property h4 {
 	margin: 0;
@@ -203,4 +207,8 @@ header ul a:hover {
 
 table th, td {
 	text-align: center;
+}
+
+.acc-info {
+	font-weight: bolder;
 }
