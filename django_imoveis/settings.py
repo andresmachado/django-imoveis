@@ -87,8 +87,8 @@ WSGI_APPLICATION = 'django_imoveis.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-urlparse.uses_netloc.append("postgres")
-url = urlparse.urlparse(os.environ["DATABASE_URL"])
+urllib.parse.uses_netloc.append("postgres")
+url = urllib.urlparse(os.environ["DATABASE_URL"])
 
 DATABASES = {
     'default': dj_database_url.config(default=os.environ["DATABASE_URL"])
