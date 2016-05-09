@@ -3,3 +3,5 @@
 *.jpg|png
 static_cdn
 media_cdn
+local_settings.py
+local_wsgi.py
