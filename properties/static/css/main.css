@@ -116,6 +116,14 @@ header ul a:hover {
 	border: 1px solid #bdc3c7;
 }
 
+.property-create input[readonly] {
+	background-color: #DDDDDD;
+}
+
+.property-create select {
+	background-color: white;
+}
+
 .form-input p, .register-tip {
 	text-align: center;
 	margin: 0.9em 0 0 0;

@@ -32,7 +32,7 @@
 				<h4>{{ property.property_type }}</h4>
 				<small>{{ property.category }}</small>
 				<p><strong>R$ {{ property.rent_price|floatformat:2 }}</strong></p>
-				<p>{{ property.district }}</p>
+				<p><i class="glyphicon glyphicon-map-marker"></i> {{ property.city }} - {{ property.district }}</p>
 				<p><spam>{{ property.rooms }} dorms</spam> | <spam>{{ property.total_area }}m²</spam></p>
 				<p class="owner">{{ property.owner|upper }}</p>
 			</div>

@@ -10,3 +10,7 @@ class CreatePropertyForm(forms.ModelForm):
 				  'property_type', 'category', 'rooms', 'util_area', 'total_area', 'title', 'image', 'description',
 				  'rent_price'
 		)
+		widgets = {
+			'district': forms.TextInput(attrs={'readonly': 'readonly'}),
+			'city': forms.TextInput(attrs={'readonly': 'readonly'}),
+		}

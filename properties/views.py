@@ -38,7 +38,7 @@ def property_edit(request, pk, template_name='properties/property_create.html'):
 
 def property_detail(request, pk, template_name='properties/property_detail.html'):
 	property = get_object_or_404(Property, pk=pk)
-	recommended = Property.objects.filter(district__icontains=property.district).exclude(pk=pk)
+	recommended = Property.objects.filter(city__icontains=property.city).exclude(pk=pk)
 	context = {
 		'property': property,
 		'recommended': recommended
