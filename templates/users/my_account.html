@@ -1,0 +1,50 @@
+{% extends 'properties/base.html' %}
+{% block title %}{{ block.super }} | Minha conta {% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			{% if not properties %}
+			<div class="my-property col-md-12">
+				<h1>Você não tem anúncios no momento. <a href="{% url 'create_property' %}">clique aqui</a> para cadastrar um imóvel</h1>
+			</div>
+			{% else %}
+			
+			<div class="col-md-12">
+				<h2>Meus anúncios</h2>
+			<table class="offers table">
+				<thead>
+				<tr>
+					<th>Fotos</th>
+					<th>Anúncio</th>
+					<th>Ações</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for my_property in properties %}
+				<tr>
+					<td class="size"><img src="{{ my_property.image.url }}" /></td>
+					<td>
+						<p>{{ my_property.title }}</p>
+						<p>
+							{{ my_property.address }} <br />
+							{{ my_property.district }}, {{ my_property.city }}-{{ my_property.state }}
+						</p>
+
+					</td>
+					<td>
+						<p><a href="{% url 'show_property' pk=my_property.id %}">Visualizar anúncio</a></p>
+						<p><a href="{% url 'edit_property' pk=my_property.id %}">Editar anúncio</a></p>
+						<p><a href="#">Remover anúncio</a></p>
+					</td>
+				</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock%}

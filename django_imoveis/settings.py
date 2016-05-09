@@ -26,7 +26,8 @@ SECRET_KEY = 'kl_kdu-c(@@ni7(ua3@hhc_gus5lg)^&7wii$%7*i*kl%ja=bt'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+USE_L10N = False
+USE_THOUSAND_SEPARATOR = True
 # Application definition
 
 INSTALLED_APPS = [

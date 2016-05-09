@@ -2,8 +2,6 @@
 
 {% block title %}{{block.super}}{% endblock title %}
 
-{% load humanize %}
-
 {% block content %}
 <div class="container">
 	<div class="row">
@@ -33,7 +31,7 @@
 			<div class="col-md-6 property-info">
 				<h4>{{ property.property_type }}</h4>
 				<small>{{ property.category }}</small>
-				<p><strong>R$ {{ property.rent_price|floatformat:2|intcomma }}</strong></p>
+				<p><strong>R$ {{ property.rent_price|floatformat:2 }}</strong></p>
 				<p>{{ property.district }}</p>
 				<p><spam>{{ property.rooms }} dorms</spam> | <spam>{{ property.total_area }}m²</spam></p>
 				<p class="owner">{{ property.owner|upper }}</p>

@@ -11,10 +11,21 @@
 				{% if next %}
 				<input type="hidden" class="form-input" name="next" value="{{ next }}">
 				{% endif %}
+				{% if login_form.non_field_errors %}
+				<div class="alert alert-danger">
+					    <ul class='errorlist'>
+					        {% for error in login_form.non_field_errors %}
+					            <li>{{ error }}</li>
+					        {% endfor %}
+					    </ul>
+				</div>
+				{% endif %}
 				<p>
+					{{ login_form.username.errors }}
 					<input type="text" class="form-input" id="username" name="username" placeholder="Nome de usuário">
 				</p>
 				<p>
+					{{ login_form.username.errors }}
 					<input type="password" class="form-input" id="password" name="password" placeholder="Senha" />
 				</p>
 				<button type="submit" class="btn btn-block btn-success">Entrar</button>

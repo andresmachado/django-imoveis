@@ -48,7 +48,7 @@
 			<div class="b-shadow col-md-12 property-info">
 				<h1>{{ property.title }}</h1>
 				<h3>Descrição</h3>
-				<p>{{ property.description }}</p>
+				<p>{{ property.description|linebreaks }}</p>
 			</div>
 		</div>
 		<aside class="sidebar col-md-4">
@@ -60,7 +60,7 @@
 					</div>
 					<div class="col-md-8">
 						<p><strong>R$ {{ property.rent_price|floatformat:2 }}</strong></p>
-						<p><i class="glyphicon glyphicon-map-marker"></i> {{ property.district }}</p>
+						<p><i class="glyphicon glyphicon-map-marker"></i> {{ property.city }} - {{ property.district }}</p>
 						<p><i class="glyphicon glyphicon-bed"></i> {{ property.rooms }} dorms | {{ property.util_area }}m²</p>
 					</div>
 				</div>

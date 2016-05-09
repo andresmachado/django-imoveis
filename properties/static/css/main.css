@@ -18,7 +18,8 @@ header {
 	margin-bottom: 30px;
 }
 
-header h3 a {
+header h3, header h3 a {
+	margin-top: 1.2em;
 	color: white;
 	text-transform: uppercase;
 	font-weight: bolder;
@@ -39,12 +40,50 @@ header ul a {
 }
 
 header ul a:hover {
+	cursor: pointer;
 	text-decoration: none;
 }
 
-header ul p {
-	color: white;
+.main-menu > ul > li {
+	float: left;
+	display: inline-block;
+	position: relative;
 }
+
+.main-menu > ul > li > a {
+	padding: 10px 10px;
+	display: inline-block;
+}
+
+.main-menu ul > li > ul {
+	display: none;
+}
+
+.main-menu li:hover .submenu {
+    display: block;
+    z-index: 100;
+}
+
+.submenu, .submenu:hover {
+    width:160%;
+    position:absolute;
+    top:50%;
+    left:0px;
+    transition:opacity linear 0.15s;
+    box-shadow:0px 2px 3px rgba(0,0,0,0.2);
+    background:#000;
+}
+ 
+.submenu li {
+    display:block;
+    font-size:14px;
+}
+ 
+.submenu li a {
+    padding:10px 20px;
+    display:block;
+}
+
 
 .property h4 {
 	margin: 0;
@@ -137,4 +176,23 @@ header ul p {
 .property-create input, .property-create select, .property-create textarea {
 	display: block;
 
+}
+
+.my-property h1 {
+	font-size: 1.5em;
+	color: #bdc3c7;
+	font-weight: bold;
+	text-align: center;
+}
+
+.offers img {
+	max-width: 100%;
+}
+
+.size {
+	width: 20%;
+}
+
+table th, td {
+	text-align: center;
 }
