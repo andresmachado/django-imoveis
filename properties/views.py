@@ -56,6 +56,11 @@ def property_detail(request, pk, template_name='properties/property_detail.html'
 	}
 	return render(request, template_name, context)
 
-
-def property_delete(request, pk):
-    return HttpResponse('<h1> Delete page works! </h1>')
+@login_required
+def property_delete(request, pk, template_name="properties/property_delete.html"):
+	property = get_object_or_404(Property, pk=pk, owner=request.user.id)
+	if request.method == 'POST':
+		property.delete()
+		messages.success(request, "Anúncio excluido com sucesso!")
+		return redirect('user_profile')
+	return render(request, template_name, {'property': property})

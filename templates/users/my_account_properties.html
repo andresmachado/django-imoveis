@@ -37,7 +37,7 @@
 					<td>
 						<p><a href="{% url 'show_property' pk=my_property.id %}">Visualizar anúncio</a></p>
 						<p><a href="{% url 'edit_property' pk=my_property.id %}">Editar anúncio</a></p>
-						<p><a href="#">Remover anúncio</a></p>
+						<p><a href="{% url 'delete_property' pk=my_property.id %}">Remover anúncio</a></p>
 					</td>
 				</tr>
 				{% endfor %}

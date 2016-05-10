@@ -133,6 +133,10 @@ header ul a:hover {
 	margin: 0.9em 0 0 0;
 }
 
+.delete-form p {
+	margin-bottom: 1.5em;
+}
+
 .signup-form {
 	padding: 1.5em;
 	margin-bottom: 2em;
