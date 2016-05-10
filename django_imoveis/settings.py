@@ -162,9 +162,9 @@ USE_THOUSAND_SEPARATOR = True
 
 STATICFILES_LOCATION = 'static_cdn'
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
 
 STATIC_ROOT =  os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Login decorator information
 
