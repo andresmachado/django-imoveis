@@ -161,6 +161,8 @@ USE_THOUSAND_SEPARATOR = True
 # you run `collectstatic`).
 
 STATICFILES_LOCATION = 'static_cdn'
+
+MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 
 STATIC_ROOT =  os.path.join(BASE_DIR, 'static')
