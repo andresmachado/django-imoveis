@@ -72,7 +72,7 @@ $(document).ready(function(){
         data: { 'property_id': property_id },
         success: function(json) {
           $('#property-'+property_id).hide();
-          alert("Anúncio removido com sucesso!");
+          alert(json['msg']);
         },
         error: function(xhr, errmsg, err) {
           // Show an error

@@ -62,10 +62,11 @@ def property_detail(request, pk, template_name='properties/property_detail.html'
 def property_delete(request):
     if request.method == "DELETE":
         property = get_object_or_404(Property, pk=int(QueryDict(request.body).get('property_id')), owner=request.user.id) 
+        property_title = property.title
         property.delete()
 
         response_data = {}
-        response_data['msg'] = "Anúncio excluído."
+        response_data['msg'] = "Anúncio {} excluído com sucesso.".format(property_title)
         return HttpResponse(
             json.dumps(response_data),
             content_type='application/json'
