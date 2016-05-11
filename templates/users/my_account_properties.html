@@ -21,9 +21,9 @@
 					<th>Ações</th>
 				</tr>
 				</thead>
-				<tbody>
+				<tbody id="delete-property">
 				{% for my_property in properties %}
-				<tr>
+				<tr id="property-{{ my_property.id }}">
 					<td class="size"><img src="{{ my_property.image.url }}" /></td>
 					<td>
 						<p>{{ my_property.title }}</p>
@@ -37,7 +37,7 @@
 					<td>
 						<p><a href="{% url 'show_property' pk=my_property.id %}">Visualizar anúncio</a></p>
 						<p><a href="{% url 'edit_property' pk=my_property.id %}">Editar anúncio</a></p>
-						<p><a href="{% url 'delete_property' pk=my_property.id %}">Remover anúncio</a></p>
+						<p><a href="#" id="delete-property-{{ my_property.id }}">Remover anúncio</a></p>
 					</td>
 				</tr>
 				{% endfor %}

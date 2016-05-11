@@ -1,8 +1,10 @@
+import json
+
 from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse, QueryDict
 
 from .forms import CreatePropertyForm
 from .models import Property
@@ -57,10 +59,23 @@ def property_detail(request, pk, template_name='properties/property_detail.html'
 	return render(request, template_name, context)
 
 @login_required
-def property_delete(request, pk, template_name="properties/property_delete.html"):
-	property = get_object_or_404(Property, pk=pk, owner=request.user.id)
-	if request.method == 'POST':
-		property.delete()
-		messages.success(request, "Anúncio excluido com sucesso!")
-		return redirect('user_profile')
-	return render(request, template_name, {'property': property})
+def property_delete(request):
+    if request.method == "DELETE":
+        property = get_object_or_404(Property, pk=int(QueryDict(request.body).get('property_id')), owner=request.user.id) 
+        property.delete()
+
+        response_data = {}
+        response_data['msg'] = "Anúncio excluído."
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type='application/json'
+        )
+    else:
+        return HttpResponse(status=404)
+# def property_delete(request, pk, template_name="properties/property_delete.html"):
+# 	property = get_object_or_404(Property, pk=pk, owner=request.user.id)
+# 	if request.method == 'POST':
+# 		property.delete()
+# 		messages.success(request, "Anúncio excluido com sucesso!")
+# 		return redirect('user_profile')
+# 	return render(request, template_name, {'property': property})
