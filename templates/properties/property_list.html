@@ -22,7 +22,9 @@
 		{% else %}
 		{% for property in properties %}
 		<div class="property col-md-4 col-xs-12 col-lg-4">
-			<a href="{% url 'show_property' pk=property.pk %}"><h3>{{ property.title }}</h3></a>
+			<a href="{{ property.get_absolute_url }}">
+				<h3>{{ property.title }}</h3>
+			</a>
 			<div class="thumbnail col-md-6">
 				{% if property.image %}
 					<img src="{{ property.image.url }}" class='img-responsive'/>

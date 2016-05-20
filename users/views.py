@@ -1,15 +1,15 @@
-from django.http import *
-from django.shortcuts import render, get_object_or_404
-from django.template import RequestContext
-from django.core.exceptions import PermissionDenied
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
 
-from .forms import RegisterUserForm, LoginForm
 from properties.models import Property
+
+from .forms import LoginForm, RegisterUserForm
+
 
 def login_user(request, template_name='users/login.html'):
     form = LoginForm(request.POST or None)
@@ -17,17 +17,19 @@ def login_user(request, template_name='users/login.html'):
         user = form.login(request)
         if user:
             login(request, user)
-            messages.success(request, "Bem vindo, {}".format(request.user.username))
-            return HttpResponseRedirect(reverse('index'))
-    return render(request, 'users/login.html', {'login_form': form})
+            messages.success(request, "Olá, {}".format(request.user.username))
+            return HttpResponseRedirect(reverse('properties:index'))
+    return render(request, template_name, {'login_form': form})
+
 
 def logout_user(request):
-	if request.user.is_authenticated():
-		logout(request)
-		messages.success(request, "Logout realizado com sucesso!")
-		return HttpResponseRedirect(reverse('index'))
-	else:
-		raise Http404
+    if request.user.is_authenticated():
+        logout(request)
+        messages.success(request, "Logout realizado com sucesso!")
+        return HttpResponseRedirect(reverse('properties:index'))
+    else:
+        raise Http404
+
 
 def register(request, template_name='users/signup.html'):
     form = RegisterUserForm()
@@ -47,6 +49,7 @@ def registration_complete(request):
     else:
         raise Http404
 
+
 @login_required
 def user_profile(request):
     user = get_object_or_404(User, username=request.user.username)
@@ -57,7 +60,8 @@ def user_profile(request):
     }
     return render(request, 'users/my_account_properties.html', context)
 
+
 @login_required
-def user_profile_settings(request, template_name="users/my_account_settings.html"):
+def user_settings(request, template_name="users/my_account_settings.html"):
     user = get_object_or_404(User, username=request.user.username)
     return render(request, template_name, {'user': user})

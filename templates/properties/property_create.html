@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="signup-form col-md-8 col-md-offset-2">
-				<p><a href="{% url "index" %}">← Voltar</a></p>
+				<p><a href="{% url 'properties:index' %}">← Voltar</a></p>
 				<h2>Anuncie seu imóvel</h2>
 				<form class="property-create" action='' method='POST' enctype="multipart/form-data">{% csrf_token %}
 					{{ form.as_p }}

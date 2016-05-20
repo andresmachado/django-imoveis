@@ -1,4 +1,4 @@
-"""django_imoveis URL Configuration
+"""django_imoveis URL Configuration.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
@@ -18,7 +18,11 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', include('properties.urls')),
+    url(r'', include(
+        'properties.urls',
+        namespace='properties',
+        app_name='properties')
+        ),
     url(r'^users/', include('users.urls')),
     url(r'^chaining/', include('smart_selects.urls')),
 ]
