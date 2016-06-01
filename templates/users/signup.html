@@ -17,36 +17,13 @@
 			    	</ul>
 			    	{% endif %}
 				</div>
+				{% for field in form %}
 				<p>
-					{{ form.username.errors }}
-					<input id="id_username" class="form-input" maxlength="30" name="username" type="text" placeholder="Nome de usuário">
-					<span class="helptext">{{ form.username.help_text }}</span>
+					{{ field.errors }}
+					{{ field }}
+					<span class="helptext">{{ field.help_text }}</span>
 				</p>
-				<p>
-					{{ form.email.errors }}
-					<input id="id_email" class="form-input" name="email" type="email" placeholder="Email">
-					<span class="helptext">{{ form.email.help_text }}</span>
-				</p>
-				<p>
-					{{ form.first_name.errors }}
-					<input id="id_first_name" class="form-input" maxlength="100" name="first_name" type="text" placeholder="Nome">
-					<span class="helptext">{{ form.first_name.help_text }}</span>
-				</p>
-				<p>
-					{{ form.last_name.errors }}
-					<input id="id_last_name" class="form-input" maxlength="100" name="last_name" type="text" placeholder="Sobrenome">
-					<span class="helptext">{{ form.last_name.help_text }}</span>
-				</p>
-				<p>
-					{{ form.password1.errors }}
-					<input id="id_password1" class="form-input" name="password1" type="password" placeholder="Senha">
-					<span class="helptext">{{ form.password1.help_text }}</span>
-				</p>
-				<p>
-					{{ form.password2.errors }}
-					<input id="id_password2" class="form-input" name="password2" type="password" placeholder="Confirmação de senha">
-					<span class="helptext">{{ form.password2.help_text }}</span>
-				</p>
+				{% endfor %}
 				<button type="submit" class="btn btn-block btn-success">Cadastrar</button>
 			</form>
 			<p class="register-tip">

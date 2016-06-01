@@ -32,13 +32,11 @@ def logout_user(request):
 
 
 def register(request, template_name='users/signup.html'):
-    form = RegisterUserForm()
-    if request.method == 'POST':
-        form = RegisterUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            request.session['registered'] = True
-            return HttpResponseRedirect(reverse('registration_complete'))
+    form = RegisterUserForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        request.session['registered'] = True
+        return HttpResponseRedirect(reverse('registration_complete'))
     return render(request, template_name, {'form': form})
 
 
